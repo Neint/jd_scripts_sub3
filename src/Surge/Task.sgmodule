@@ -2,9 +2,6 @@
 #!desc=iOS Tasks&Cookies 模块配置
 
 # Cameron JD_HelloWorld Task&Cookies模块配置 
-# 惊喜牧场 = type=cron,cronexp="20 0-23/3 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Neint/jd_scripts_sub3/main/src/jd_jxmc.js
-# 京喜财富岛 = type=cron,cronexp="5 8,13,19 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Neint/jd_scripts_sub3/main/src/jd_cfd.js
-# 城城领现金 = type=cron,cronexp="0 0-23/1 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Neint/jd_scripts_sub3/main/src/jd_city.js
 
 [Script]
 京东多合一签到 = type=cron,cronexp=10 0 * * *,wake-system=1,timeout=60,script-path=https://raw.githubusercontent.com/Neint/jd_scripts_sub3/main/src/JD_DailyBonus.js
@@ -26,6 +23,13 @@
 取关京东店铺商品 = type=cron,cronexp="55 23 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Neint/jd_scripts_sub3/main/src/jd_unsubscribe.js
 惊喜牧场 = type=cron,cronexp="20 0-23/3 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Neint/jd_scripts_sub3/main/src/jd_jxmc.js
 京喜财富岛 = type=cron,cronexp="5 8,13,19 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Neint/jd_scripts_sub3/main/src/jd_cfd.js
+京东宠汪汪 = type=cron,cronexp="16 0-23/2 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Neint/jd_scripts_sub3/main/src/jd_joy.js
+宠汪汪积分兑换奖品 = type=cron,cronexp="59 7,15,23 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Neint/jd_scripts_sub3/main/src/jd_joy_reward.js
+宠汪汪积分兑换奖品 = type=cron,cronexp="00 8,16,0 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Neint/jd_scripts_sub3/main/src/jd_joy_reward.js
+宠汪汪邀请助力与赛跑助力 = type=cron,cronexp="35 10 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Neint/jd_scripts_sub3/main/src/jd_joy_run.js
+宠汪汪助力更新Token = type=http-response,pattern=^https:\/\/draw\.jdfcloud\.com(\/mirror)?\/\/api\/user\/addUser\?code=, requires-body=1, max-size=0, script-path=https://raw.githubusercontent.com/Neint/jd_scripts_sub3/main/src/jd_joy_run.js
+宠汪汪助力获取Token = type=http-request,pattern=^https:\/\/draw\.jdfcloud\.com(\/mirror)?\/\/api\/user\/user\/detail\?openId=, max-size=0, script-path=https://raw.githubusercontent.com/Neint/jd_scripts_sub3/main/src/jd_joy_run.js
+宠汪汪偷好友积分与狗粮 = type=cron,cronexp="10 0-21/3 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Neint/jd_scripts_sub3/main/src/jd_joy_steal.js
 jd_appopen = type=http-request,pattern=^https:\/\/api\.m\.jd\.com\/openUpgrade,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Neint/jd_scripts_sub3/main/src/utils/jd_appopen.js,script-update-interval=0
 
 [MITM]
