@@ -1,4 +1,4 @@
-/*
+﻿/*
 京东京喜工厂助力
 先了解自己环境怎么添加内部助力码
 助力顺序：内部 -> HW.ts -> 助力池
@@ -1650,7 +1650,6 @@ async function jdDreamFactory() {
   }
 }
 
-
 async function helpFriends() {
   if ($.canHelpFlag) {
     await shareCodesFormat();
@@ -1747,7 +1746,18 @@ function userInfo() {
           if (data['ret'] === 0) {
             data = data['data'];
             $.unActive = true;//标记是否开启了京喜活动或者选购了商品进行生产
-            $.encryptPin = '';
+            $.encryptPin = data.user.encryptPin;
+
+            for (let k = 0; k < 3; k++) {
+              try {
+                await runTimes()
+                console.log('ok')
+                break
+              } catch (e) {
+              }
+              await $.wait(Math.floor(Math.random() * 10 + 3) * 1000)
+            }
+
             $.shelvesList = [];
             $.nickName = data.user.nickname || $.UserName; // 昵称或pin码
           } else {
@@ -1758,6 +1768,22 @@ function userInfo() {
         $.logErr(e, resp)
       } finally {
         resolve();
+      }
+    })
+  })
+}
+
+function runTimes() {
+  return new Promise((resolve, reject) => {
+    $.get({
+      url: `https://api.jdsharecode.xyz/api/runTimes?activityId=jxfactory&sharecode=${$.encryptPin}`
+    }, (err, resp, data) => {
+      if (err) {
+        console.log('上报失败', err)
+        reject(err)
+      } else {
+        console.log(data)
+        resolve()
       }
     })
   })
@@ -2062,7 +2088,7 @@ function Env(t, e) {
 
   return new class {
     constructor(t, e) {
-      this.name = t, this.http = new s(this), this.data = null, this.dataFile = "box.dat", this.logs = [], this.isMute = !1, this.isNeedRewrite = !1, this.logSeparator = "\n", this.startTime = (new Date).getTime(), Object.assign(this, e), this.log("", `🔔${this.name}, 开始!`)
+      this.name = t, this.http = new s(this), this.data = null, this.dataFile = "box.dat", this.logs = [], this.isMute = !1, this.isNeedRewrite = !1, this.logSeparator = "\n", this.startTime = (new Date).getTime(), Object.assign(this, e), this.log("", `��${this.name}, 开始!`)
     }
 
     isNode() {
@@ -2296,7 +2322,7 @@ function Env(t, e) {
         }
       };
       if (this.isMute || (this.isSurge() || this.isLoon() ? $notification.post(e, s, i, o(r)) : this.isQuanX() && $notify(e, s, i, o(r))), !this.isMuteLog) {
-        let t = ["", "==============📣系统通知📣=============="];
+        let t = ["", "==============��系统通知��=============="];
         t.push(e), s && t.push(s), i && t.push(i), console.log(t.join("\n")), this.logs = this.logs.concat(t)
       }
     }
@@ -2316,7 +2342,7 @@ function Env(t, e) {
 
     done(t = {}) {
       const e = (new Date).getTime(), s = (e - this.startTime) / 1e3;
-      this.log("", `🔔${this.name}, 结束! 🕛 ${s} 秒`), this.log(), (this.isSurge() || this.isQuanX() || this.isLoon()) && $done(t)
+      this.log("", `��${this.name}, 结束! �� ${s} 秒`), this.log(), (this.isSurge() || this.isQuanX() || this.isLoon()) && $done(t)
     }
   }(t, e)
 }
